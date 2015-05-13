@@ -4,7 +4,6 @@ Content\Sound\gameMusic.xnb
 Content\Sound\gameMusic.wma
 Content\Sound\menuMusic.xnb
 Content\Sound\menuMusic.wma
-Content\gameFont.xnb
 Content\Images\bgLayer1.xnb
 Content\Images\bgLayer2.xnb
 Content\Images\endMenu.xnb
@@ -16,3 +15,4 @@ Content\Images\mine.xnb
 Content\Images\mineAnimation.xnb
 Content\Images\player.xnb
 Content\Images\shipAnimation.xnb
+Content\Images\gameFont.xnb

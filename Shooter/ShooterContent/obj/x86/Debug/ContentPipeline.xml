@@ -40,15 +40,6 @@
       <Time>2015-05-08T11:46:56.1689303-06:00</Time>
     </Item>
     <Item>
-      <Source>gameFont.spritefont</Source>
-      <Name>gameFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\gameFont.xnb</Output>
-      <Time>2015-05-08T11:46:55.2289083-06:00</Time>
-    </Item>
-    <Item>
       <Source>Images\bgLayer1.png</Source>
       <Name>Images\bgLayer1</Name>
       <Importer>TextureImporter</Importer>
@@ -146,6 +137,15 @@
       <Options>None</Options>
       <Output>C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\shipAnimation.xnb</Output>
       <Time>2015-05-08T11:46:55.5599117-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\gameFont.spritefont</Source>
+      <Name>Images\gameFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\gameFont.xnb</Output>
+      <Time>2015-05-08T11:46:55.2289083-06:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -2,7 +2,6 @@ C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\laserFire.xnb
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\gameMusic.xnb
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\menuMusic.xnb
-C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\gameFont.xnb
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\gameMusic.wma
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Sound\menuMusic.wma
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Shooter.exe
@@ -22,3 +21,4 @@ C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\mineAnimation.xnb
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\player.xnb
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\shipAnimation.xnb
+C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\gameFont.xnb

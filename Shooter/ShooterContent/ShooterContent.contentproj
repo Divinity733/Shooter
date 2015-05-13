@@ -119,7 +119,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="gameFont.spritefont">
+    <Compile Include="Images\gameFont.spritefont">
       <Name>gameFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
