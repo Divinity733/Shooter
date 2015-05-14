@@ -147,6 +147,24 @@
       <Output>C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\gameFont.xnb</Output>
       <Time>2015-05-08T11:46:55.2289083-06:00</Time>
     </Item>
+    <Item>
+      <Source>Images\redgreen.png</Source>
+      <Name>Images\redgreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\redgreen.xnb</Output>
+      <Time>2015-05-14T12:38:23.6432632-06:00</Time>
+    </Item>
+    <Item>
+      <Source>Images\troll.png</Source>
+      <Name>Images\troll</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\troll.xnb</Output>
+      <Time>2015-05-14T12:49:17.6443481-06:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

@@ -54,6 +54,12 @@ namespace Shooter.Controller
         private Texture2D projectileTexture;
         private List<Projectile> projectiles;
 
+        private Texture2D laserTexture;
+        private List<Laser> lasers;
+
+        private Texture2D trollTexture;
+        private List<Troll> trolls;
+
         // The rate of fire of the player laser
         private TimeSpan fireTime;
         private TimeSpan previousFireTime;
@@ -116,8 +122,12 @@ namespace Shooter.Controller
 
             projectiles = new List<Projectile>();
 
+            lasers = new List<Laser>();
+
+            trolls = new List<Troll>();
+
             // Set the laser to fire every quarter second
-            fireTime = TimeSpan.FromSeconds(0.15f);
+            fireTime = TimeSpan.FromSeconds(0.1f);
 
             explosions = new List<Animation>();
 
@@ -150,6 +160,8 @@ namespace Shooter.Controller
             bgLayer2.Initialize(Content, "Images/bgLayer2", GraphicsDevice.Viewport.Width, -2);
             enemyTexture = Content.Load<Texture2D>("Images/mineAnimation");
             projectileTexture = Content.Load<Texture2D>("Images/laser");
+            laserTexture = Content.Load<Texture2D>("Images/redgreen");
+            trollTexture = Content.Load<Texture2D>("Images/troll");
 
             mainBackground = Content.Load<Texture2D>("Images/mainbackground");
 
@@ -200,7 +212,6 @@ namespace Shooter.Controller
             currentKeyboardState = Keyboard.GetState();
             currentGamePadState = GamePad.GetState(PlayerIndex.One);
 
-
             //Update the player
             UpdatePlayer(gameTime);
 
@@ -217,6 +228,10 @@ namespace Shooter.Controller
             // Update the projectiles
             UpdateProjectiles();
 
+            UpdateLasers();
+
+            UpdateTroll();
+
             // Update the explosions
             UpdateExplosions(gameTime);
 
@@ -230,6 +245,20 @@ namespace Shooter.Controller
             projectiles.Add(projectile);
         }
 
+        private void AddLaser(Vector2 position)
+        {
+            Laser laser = new Laser();
+            laser.Initialize(GraphicsDevice.Viewport, laserTexture, position);
+            lasers.Add(laser);
+        }
+
+        private void AddTroll(Vector2 position)
+        {
+            Troll troll = new Troll();
+            troll.Initialize(GraphicsDevice.Viewport, trollTexture, position);
+            trolls.Add(troll);
+        }
+
         private void UpdateProjectiles()
         {
             // Update the Projectiles
@@ -240,6 +269,34 @@ namespace Shooter.Controller
                 if (projectiles[i].Active == false)
                 {
                     projectiles.RemoveAt(i);
+                }
+            }
+        }
+
+        private void UpdateLasers()
+        {
+            // Update the Lasers
+            for (int i = lasers.Count - 1; i >= 0; i--)
+            {
+                lasers[i].Update();
+
+                if (lasers[i].Active == false)
+                {
+                    lasers.RemoveAt(i);
+                }
+            }
+        }
+
+        private void UpdateTroll()
+        {
+            // Update the Lasers
+            for (int i = trolls.Count - 1; i >= 0; i--)
+            {
+                trolls[i].Update();
+
+                if (trolls[i].Active == false)
+                {
+                    trolls.RemoveAt(i);
                 }
             }
         }
@@ -306,6 +363,52 @@ namespace Shooter.Controller
                     }
                 }
             }
+
+            // Laser vs Enemy Collision
+            for (int i = 0; i < lasers.Count; i++)
+            {
+                for (int j = 0; j < enemies.Count; j++)
+                {
+                    // Create the rectangles we need to determine if we collided with each other
+                    rectangle1 = new Rectangle((int)lasers[i].Position.X -
+                    lasers[i].Width / 2, (int)lasers[i].Position.Y -
+                    lasers[i].Height / 2, lasers[i].Width, lasers[i].Height);
+
+                    rectangle2 = new Rectangle((int)enemies[j].Position.X - enemies[j].Width / 2,
+                    (int)enemies[j].Position.Y - enemies[j].Height / 2,
+                    enemies[j].Width, enemies[j].Height);
+
+                    // Determine if the two objects collided with each other
+                    if (rectangle1.Intersects(rectangle2))
+                    {
+                        enemies[j].Health -= lasers[i].Damage;
+                        lasers[i].Active = false;
+                    }
+                }
+            }
+
+            // Troll vs Enemy Collision
+            for (int i = 0; i < trolls.Count; i++)
+            {
+                for (int j = 0; j < enemies.Count; j++)
+                {
+                    // Create the rectangles we need to determine if we collided with each other
+                    rectangle1 = new Rectangle((int)trolls[i].Position.X -
+                    trolls[i].Width / 2, (int)trolls[i].Position.Y -
+                    trolls[i].Height / 2, trolls[i].Width, trolls[i].Height);
+
+                    rectangle2 = new Rectangle((int)enemies[j].Position.X - enemies[j].Width / 2,
+                    (int)enemies[j].Position.Y - enemies[j].Height / 2,
+                    enemies[j].Width, enemies[j].Height);
+
+                    // Determine if the two objects collided with each other
+                    if (rectangle1.Intersects(rectangle2))
+                    {
+                        enemies[j].Health -= trolls[i].Damage;
+                        trolls[i].Active = false;
+                    }
+                }
+            }
         }
 
         private void UpdatePlayer(GameTime gameTime)
@@ -342,17 +445,74 @@ namespace Shooter.Controller
             player.position.X = MathHelper.Clamp(player.Position.X, 0, GraphicsDevice.Viewport.Width - player.Width);
             player.position.Y = MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height - player.Height);
 
-            // Fire only every interval we set as the fireTime
-            if (gameTime.TotalGameTime - previousFireTime > fireTime)
+            // Fire Projectiles
+            if (currentGamePadState.Buttons.B == ButtonState.Pressed)
             {
-                // Reset our current time
-                previousFireTime = gameTime.TotalGameTime;
+                // Fire only when button is held with same rate as autofire
+                if (gameTime.TotalGameTime - previousFireTime > fireTime)
+                {
+                    // Reset our current time
+                    previousFireTime = gameTime.TotalGameTime;
 
-                // Add the projectile, but add it to the front and center of the player
-                AddProjectile(player.Position + new Vector2(player.Width / 2, 0));
+                    // Add the projectile, but add it to the front and center of the player
+                    AddProjectile(player.Position + new Vector2(player.Width / 2, 0));
 
-                // Play the laser sound
-                laserSound.Play();
+                    // Play the laser sound
+                    laserSound.Play();
+                }
+            }
+
+            // Fire Lasers
+            if (currentGamePadState.Buttons.X == ButtonState.Pressed)
+            {
+                // Fire only when button is held with same rate as autofire
+                if (gameTime.TotalGameTime - previousFireTime > fireTime)
+                {
+                    // Reset our current time
+                    previousFireTime = gameTime.TotalGameTime;
+
+                    // Add the projectile, but add it to the front and center of the player
+                    AddLaser(player.Position + new Vector2(player.Width / 2, 0));
+
+                    // Play the laser sound
+                    laserSound.Play();
+                }
+            }
+
+            // Fire Troll
+            if (currentGamePadState.Buttons.Y == ButtonState.Pressed)
+            {
+                // Fire only when button is held with same rate as autofire
+                if (gameTime.TotalGameTime - previousFireTime > fireTime)
+                {
+                    // Reset our current time
+                    previousFireTime = gameTime.TotalGameTime;
+
+                    // Add the projectile, but add it to the front and center of the player
+                    AddTroll(player.Position + new Vector2(player.Width / 2, 0));
+
+                    // Play the laser sound
+                    laserSound.Play();
+                }
+            }
+
+            // Fire All
+            if (currentGamePadState.Buttons.RightShoulder == ButtonState.Pressed)
+            {
+                // Fire only when button is held with same rate as autofire
+                if (gameTime.TotalGameTime - previousFireTime > fireTime)
+                {
+                    // Reset our current time
+                    previousFireTime = gameTime.TotalGameTime;
+
+                    // Add the projectile, but add it to the front and center of the player
+                    AddProjectile(player.Position + new Vector2(player.Width / 2, 0));
+                    AddLaser(player.Position + new Vector2(player.Width / 2, 0));
+                    AddTroll(player.Position + new Vector2(player.Width / 2, 0));
+
+                    // Play the laser sound
+                    laserSound.Play();
+                }
             }
 
             // reset score if player health goes to zero
@@ -482,6 +642,18 @@ namespace Shooter.Controller
             for (int i = 0; i < projectiles.Count; i++)
             {
                 projectiles[i].Draw(spriteBatch);
+            }
+
+            // Draw the Lasers
+            for (int i = 0; i < lasers.Count; i++)
+            {
+                lasers[i].Draw(spriteBatch);
+            }
+
+            // Draw the Trolls
+            for (int i = 0; i < trolls.Count; i++)
+            {
+                trolls[i].Draw(spriteBatch);
             }
 
             // Draw the explosions

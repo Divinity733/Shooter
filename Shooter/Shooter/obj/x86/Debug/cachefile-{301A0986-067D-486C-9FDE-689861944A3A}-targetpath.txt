@@ -16,3 +16,5 @@ Content\Images\mineAnimation.xnb
 Content\Images\player.xnb
 Content\Images\shipAnimation.xnb
 Content\Images\gameFont.xnb
+Content\Images\redgreen.xnb
+Content\Images\troll.xnb

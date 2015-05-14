@@ -22,3 +22,5 @@ C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\player.xnb
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\shipAnimation.xnb
 C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\gameFont.xnb
+C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\redgreen.xnb
+C:\Users\blit1703\Documents\Visual Studio 2010\Projects\Shooter\Shooter\Shooter\bin\x86\Debug\Content\Images\troll.xnb
